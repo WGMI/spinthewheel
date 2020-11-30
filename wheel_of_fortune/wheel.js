@@ -292,20 +292,14 @@ function alertPrize(indicatedSegment)
     // Just alert to the user what happened.
     // In a real project probably want to do something more interesting than this with the result.
     if (indicatedSegment.text === 'Hoodie') {
-        prize.style.border = "3px solid black";
         prize.innerHTML = `A ${indicatedSegment.text}`;
     } else if (indicatedSegment.text === 'Mbuzi') {
-        prize.style.border = "3px solid black";
         prize.innerHTML = `A ${indicatedSegment.text}`;
-        prize.style.border = "3px solid black";
     } else if(indicatedSegment.text === 'Headphones'){
         prize.innerHTML = `${indicatedSegment.text}`;
-        prize.style.border = "3px solid black";
     }else if(indicatedSegment.text === 'Water bottle'){
-        prize.style.border = "3px solid black";
         prize.innerHTML = `A ${indicatedSegment.text}`;
     }else{
-        prize.style.border = "3px solid black";
         prize.innerHTML = `A ${indicatedSegment.text}`;
     }
     confettiParams.number = 70;

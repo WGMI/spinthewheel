@@ -8,13 +8,40 @@ body
     height: 100vh;
 }
 
-#prize{
-    margin-left: 1rem;
-    position: absolute;
-    right: 20px;
-    font-size: 3rem;
-    top: 8rem;
+.line{
+    height: 4rem;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 16px;
 }
+
+#prize{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    /*animation: 3s anim-lineUp ease-in-out forwards;*/
+    animation: 4s anim-popoutin ease infinite;
+}
+
+@keyframes anim-popoutin {
+    0% {
+        color: green;
+        opacity: 0.5;
+    }
+    25% {
+        color: red;
+        opacity: 0.5;
+    }
+    50% {
+        color: red;
+        opacity: 0.75;
+    }
+    100% {
+        color: green;
+        opacity: 1;
+    }
+}
+
 
 /* Sets the background image for the wheel */
 td.the_wheel
@@ -86,7 +113,7 @@ td.pw3
 }
 
 @media only screen and (max-width: 600px){
-    #prize{
-        display: none;
-    }
+    /*#prize{*/
+    /*    display: none;*/
+    /*}*/
 }
