@@ -161,10 +161,10 @@ let theWheel = new Winwheel({
     'segments'        :             // Define segments including colour and text.
         [                               // font size and test colour overridden on backrupt segments.
             {'fillStyle' : '#fff', 'text' : 'Headphones', 'textFontSize' : 16, 'textFillStyle' : '#000'},
-            {'fillStyle' : '#009a3e', 'text' : 'Shopping vouchers', 'textFontSize' : 16, 'textFillStyle' : '#000'},
-            {'fillStyle' : '#fff', 'text' : 'Water bottles', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#009a3e', 'text' : 'Shopping voucher', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#fff', 'text' : 'Water bottle', 'textFontSize' : 16, 'textFillStyle' : '#000'},
             {'fillStyle' : '#3bb26b', 'text' : 'Mbuzi', 'textFontSize' : 16, 'textFillStyle' : '#000'},
-            {'fillStyle' : '#e31119', 'text' : 'Hoodies', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#e31119', 'text' : 'Hoodie', 'textFontSize' : 16, 'textFillStyle' : '#000'},
         ],
     'animation' :           // Specify the animation to use.
         {
