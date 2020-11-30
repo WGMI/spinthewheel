@@ -19,26 +19,21 @@ body
     text-transform: uppercase;
     font-weight: 900;
     font-size: 2rem;
-    /*animation: 3s anim-lineUp ease-in-out forwards;*/
     animation: 4s anim-popoutin ease infinite;
 }
 
 @keyframes anim-popoutin {
     0% {
         color: green;
-        opacity: 0.5;
     }
     25% {
         color: red;
-        opacity: 0.5;
     }
     50% {
         color: red;
-        opacity: 0.75;
     }
     100% {
         color: green;
-        opacity: 1;
     }
 }
 
