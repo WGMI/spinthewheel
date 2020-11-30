@@ -153,16 +153,18 @@ let theWheel = new Winwheel({
     'outerRadius'     : 212,        // Set outer radius so wheel fits inside the background.
     'innerRadius'     : 75,         // Make wheel hollow so segments don't go all way to center.
     'textFontSize'    : 24,         // Set default font size for the segments.
-    'textOrientation' : 'vertical', // Make text vertial so goes down from the outside of wheel.
-    'textAlignment'   : 'outer',    // Align text to outside of wheel.
+    'textOrientation' : 'curved', // Make text curved.
+    'textAlignment'   : 'outer', // Align text to outside of wheel.
+    'textMargin'        : 40,
+    'textFontFamily'    : 'monospace',
     'numSegments'     : 5,         // Specify number of segments.
     'segments'        :             // Define segments including colour and text.
         [                               // font size and test colour overridden on backrupt segments.
-            {'fillStyle' : '#fff', 'text' : '300'},
-            {'fillStyle' : '#009a3e', 'text' : '450'},
-            {'fillStyle' : '#fff', 'text' : '600'},
-            {'fillStyle' : '#3bb26b', 'text' : '750'},
-            {'fillStyle' : '#e31119', 'text' : 'BANKRUPT', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#fff', 'text' : 'Headphones', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#009a3e', 'text' : 'Shopping vouchers', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#fff', 'text' : 'Water bottles', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#3bb26b', 'text' : 'Mbuzi', 'textFontSize' : 16, 'textFillStyle' : '#000'},
+            {'fillStyle' : '#e31119', 'text' : 'Hoodies', 'textFontSize' : 16, 'textFillStyle' : '#000'},
         ],
     'animation' :           // Specify the animation to use.
         {
