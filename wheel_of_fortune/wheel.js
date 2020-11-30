@@ -1,5 +1,7 @@
 // Confetti code starts
 // global variables
+let prize = document.getElementById('prize');
+prize.innerHTML = "";
 const confetti = document.getElementById('confetti');
 const confettiCtx = confetti.getContext('2d');
 let container, confettiElements = [], clickPosition;
@@ -144,9 +146,7 @@ function confettiLoop() {
     setTimeout(confettiLoop, 700 + Math.random() * 1700);
 }
 
-
 // Confetti code ends
-
 
 // Create new wheel object specifying the parameters at creation time.
 let theWheel = new Winwheel({
@@ -271,6 +271,8 @@ function startSpin()
 function resetWheel()
 {
     confettiParams.number = 0;
+    prize.innerHTML = "";
+    prize.style.border = "";
     theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
     theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
     theWheel.draw();                // Call draw to render changes to the wheel.
@@ -289,13 +291,23 @@ function alertPrize(indicatedSegment)
 {
     // Just alert to the user what happened.
     // In a real project probably want to do something more interesting than this with the result.
-    // if (indicatedSegment.text === 'LOOSE TURN') {
-    //     alert('Sorry but you loose a turn.');
-    // } else if (indicatedSegment.text === 'BANKRUPT') {
-    //     alert('Oh no, you have gone BANKRUPT!');
-    // } else {
-    //     alert("You have won " + indicatedSegment.text);
-    // }
+    if (indicatedSegment.text === 'Hoodie') {
+        prize.style.border = "3px solid black";
+        prize.innerHTML = `A ${indicatedSegment.text}`;
+    } else if (indicatedSegment.text === 'Mbuzi') {
+        prize.style.border = "3px solid black";
+        prize.innerHTML = `A ${indicatedSegment.text}`;
+        prize.style.border = "3px solid black";
+    } else if(indicatedSegment.text === 'Headphones'){
+        prize.innerHTML = `${indicatedSegment.text}`;
+        prize.style.border = "3px solid black";
+    }else if(indicatedSegment.text === 'Water bottle'){
+        prize.style.border = "3px solid black";
+        prize.innerHTML = `A ${indicatedSegment.text}`;
+    }else{
+        prize.style.border = "3px solid black";
+        prize.innerHTML = `A ${indicatedSegment.text}`;
+    }
     confettiParams.number = 70;
     confettiLoop();
 }

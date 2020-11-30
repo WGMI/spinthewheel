@@ -8,6 +8,14 @@ body
     height: 100vh;
 }
 
+#prize{
+    margin-left: 1rem;
+    position: absolute;
+    right: 20px;
+    font-size: 3rem;
+    top: 40px;
+}
+
 /* Sets the background image for the wheel */
 td.the_wheel
 {
