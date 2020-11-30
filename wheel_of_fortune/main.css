@@ -13,7 +13,7 @@ body
     position: absolute;
     right: 20px;
     font-size: 3rem;
-    top: 40px;
+    top: 8rem;
 }
 
 /* Sets the background image for the wheel */
@@ -83,4 +83,10 @@ td.pw3
 .margin_bottom
 {
     margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 600px){
+    #prize{
+        display: none;
+    }
 }
