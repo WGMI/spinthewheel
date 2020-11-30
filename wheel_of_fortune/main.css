@@ -3,6 +3,11 @@ body
     font-family: arial;
 }
 
+#confetti{
+    width: 100%;
+    height: 100vh;
+}
+
 /* Sets the background image for the wheel */
 td.the_wheel
 {
@@ -39,6 +44,10 @@ table.power th
 {
     background-color: white;
     cursor: default;
+}
+
+tr{
+    z-index: 30;
 }
 
 td.pw1
