@@ -2483,10 +2483,9 @@
         confettiParams.number = 0;
     }
 
-    function confettiLoop() {
-        addConfetti();
-        setTimeout(confettiLoop, 700 + Math.random() * 1700);
-        setTimeout(stopConfetti, 15000);
+    function confettiLoop(){
+        setInterval(addConfetti, 700);
+        setTimeout(stopConfetti, 10000);
     }
 
     // Confetti code ends
@@ -2614,8 +2613,7 @@
     // Function for reset button.
     // -------------------------------------------------------
     function resetWheel() {
-        confettiParams.number = 0;
-        confettiParams.number = 70;
+        stopConfetti();
         prize.innerHTML = "";
         prize.style.border = "";
         theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
@@ -2635,29 +2633,13 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if (indicatedSegment.text === 'Hoodie') {
+        if(indicatedSegment.text !== 'Try Again'){
+            confettiParams.number = 70;
             prize.innerHTML = `A ${indicatedSegment.text}!`;
-            confettiParams.number = 70;
             confettiLoop();
-        } else if (indicatedSegment.text === 'Mbuzi') {
-            prize.innerHTML = `A ${indicatedSegment.text}!`;
-            confettiParams.number = 70;
-            confettiLoop();
-        } else if (indicatedSegment.text === 'Headphones') {
-            prize.innerHTML = `${indicatedSegment.text}!`;
-            confettiParams.number = 70;
-            confettiLoop();
-        } else if (indicatedSegment.text === 'Water bottle') {
-            prize.innerHTML = `A ${indicatedSegment.text}!`;
-            confettiParams.number = 70;
-            confettiLoop();
-        }else if (indicatedSegment.text === 'Shopping Voucher') {
-            prize.innerHTML = `A ${indicatedSegment.text}!`;
-            confettiParams.number = 70;
-            confettiLoop();
-        } else {
+        }else{
+            stopConfetti();
             prize.innerHTML = `Try Again`;
-            confettiParams.number = 0;
         }
     }
 </script>
