@@ -7,13 +7,14 @@
 <body>
 
 <div align="center">
-    <h1>Safaricom SPIN THE WHEEL</h1>
+    <img class="back_img" src="background.jpeg" alt="background image">
+    <h1 style="color: white; margin-top: 2rem;">Safaricom's <span style="color: red">WHEEL OF FORTUNE</span></h1>
     <br/>
-    <p>Choose a power setting then press the SPIN button to see your prize.</p>
+    <p style="color: white">Choose a power setting then press the SPIN button to see your prize.</p>
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
-    <table cellpadding="0" cellspacing="0" border="0">
+    <table cellpadding="0" cellspacing="0" border="0" style="margin-left: auto; margin-right: 7rem;">
         <tr>
             <td>
                 <div class="power_controls">
@@ -36,7 +37,7 @@
                     <br/>
                     <img id="spin_button" src="spin_off.png" alt="Spin" onClick="startSpin();"/>
                     <br/><br/>
-                    &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;">Play Again</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                    &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;" style="color: white;">Play Again</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
                 </div>
             </td>
             <td width="438" height="582" class="the_wheel" align="center" align="center">
@@ -49,40 +50,13 @@
                 align="center">
                 <canvas id="confetti"></canvas>
             </td>
-            <!--            <td style="max-width: 20rem"><p id="prize"></p></td>-->
         </tr>
     </table>
 </div>
-<script type="text/javascript" src="../Winwheel.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script>
 
-    /*
-    Winwheel.js, by Douglas McKechie @ www.dougtesting.net
-    See website for tutorials and other documentation.
-
-    The MIT License (MIT)
-
-    Copyright (c) 2012-2019 Douglas McKechie
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
-*/
+    //Winwheel code starts
 
     // ====================================================================================================================
     // The constructor for the WinWheel object, a JSON-like array of options can be passed in.
@@ -2359,6 +2333,8 @@
         winwheelToDrawDuringAnimation.draw();
     }
 
+    // Winwheel code ends
+
 
     // Confetti code starts
     // global variables
@@ -2503,9 +2479,14 @@
         window.cancelAnimationFrame(updateConfetti)
     }
 
+    function stopConfetti(){
+        confettiParams.number = 0;
+    }
+
     function confettiLoop() {
         addConfetti();
         setTimeout(confettiLoop, 700 + Math.random() * 1700);
+        setTimeout(stopConfetti, 15000);
     }
 
     // Confetti code ends
@@ -2514,19 +2495,24 @@
     let theWheel = new Winwheel({
         'outerRadius': 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius': 75,         // Make wheel hollow so segments don't go all way to center.
-        'textFontSize': 24,         // Set default font size for the segments.
+        'textFontSize': 14,         // Set default font size for the segments.
         'textOrientation': 'curved', // Make text curved.
         'textAlignment': 'outer', // Align text to outside of wheel.
-        'textMargin': 40,
+        'textMargin': 20,
         'textFontFamily': 'monospace',
-        'numSegments': 5,         // Specify number of segments.
+        'numSegments': 10,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#fff', 'text': 'Headphones', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#009a3e', 'text': 'Shopping voucher', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#fff', 'text': 'Water bottle', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#3bb26b', 'text': 'Mbuzi', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#e31119', 'text': 'Hoodie', 'textFontSize': 16, 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Headphones', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#009a3e', 'text': 'Shopping Voucher','textFontSize': 10,  'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Water bottle', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#009a3e', 'text': 'Mbuzi', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Hoodie', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2539,7 +2525,7 @@
             },
         'pins':				// Turn pins on.
             {
-                'number': 5,
+                'number': 10,
                 'fillStyle': 'silver',
                 'outerRadius': 4,
             }
@@ -2629,6 +2615,7 @@
     // -------------------------------------------------------
     function resetWheel() {
         confettiParams.number = 0;
+        confettiParams.number = 70;
         prize.innerHTML = "";
         prize.style.border = "";
         theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
@@ -2649,18 +2636,29 @@
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
         if (indicatedSegment.text === 'Hoodie') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Mbuzi') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Headphones') {
-            prize.innerHTML = `${indicatedSegment.text}`;
+            prize.innerHTML = `${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Water bottle') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
+        }else if (indicatedSegment.text === 'Shopping Voucher') {
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `Try Again`;
+            confettiParams.number = 0;
         }
-        confettiParams.number = 70;
-        confettiLoop();
     }
 </script>
 </body>
