@@ -2,6 +2,7 @@
   "name": "saf-spin-the-wheel",
   "version": "1.0.0",
   "dependencies": {
-    "confetti-js": "0.0.18"
+    "confetti-js": "0.0.18",
+    "winwheel": "^1.0.1"
   }
 }
