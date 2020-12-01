@@ -2495,19 +2495,24 @@
     let theWheel = new Winwheel({
         'outerRadius': 212,        // Set outer radius so wheel fits inside the background.
         'innerRadius': 75,         // Make wheel hollow so segments don't go all way to center.
-        'textFontSize': 24,         // Set default font size for the segments.
+        'textFontSize': 14,         // Set default font size for the segments.
         'textOrientation': 'curved', // Make text curved.
         'textAlignment': 'outer', // Align text to outside of wheel.
-        'textMargin': 40,
+        'textMargin': 20,
         'textFontFamily': 'monospace',
-        'numSegments': 5,         // Specify number of segments.
+        'numSegments': 10,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#fff', 'text': 'Headphones', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#009a3e', 'text': 'Shopping voucher', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#fff', 'text': 'Water bottle', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#3bb26b', 'text': 'Mbuzi', 'textFontSize': 16, 'textFillStyle': '#000'},
-                {'fillStyle': '#e31119', 'text': 'Hoodie', 'textFontSize': 16, 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Headphones', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#009a3e', 'text': 'Shopping Voucher','textFontSize': 10,  'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Water bottle', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#009a3e', 'text': 'Mbuzi', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Hoodie', 'textFillStyle': '#000'},
+                {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
             ],
         'animation':           // Specify the animation to use.
             {
