@@ -2525,7 +2525,7 @@
             },
         'pins':				// Turn pins on.
             {
-                'number': 5,
+                'number': 10,
                 'fillStyle': 'silver',
                 'outerRadius': 4,
             }
@@ -2615,6 +2615,7 @@
     // -------------------------------------------------------
     function resetWheel() {
         confettiParams.number = 0;
+        confettiParams.number = 70;
         prize.innerHTML = "";
         prize.style.border = "";
         theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
@@ -2635,18 +2636,29 @@
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
         if (indicatedSegment.text === 'Hoodie') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Mbuzi') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Headphones') {
-            prize.innerHTML = `${indicatedSegment.text}`;
+            prize.innerHTML = `${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else if (indicatedSegment.text === 'Water bottle') {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
+        }else if (indicatedSegment.text === 'Shopping Voucher') {
+            prize.innerHTML = `A ${indicatedSegment.text}!`;
+            confettiParams.number = 70;
+            confettiLoop();
         } else {
-            prize.innerHTML = `A ${indicatedSegment.text}`;
+            prize.innerHTML = `Try Again`;
+            confettiParams.number = 0;
         }
-        confettiParams.number = 70;
-        confettiLoop();
     }
 </script>
 </body>
