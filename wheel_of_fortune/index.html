@@ -2479,9 +2479,14 @@
         window.cancelAnimationFrame(updateConfetti)
     }
 
+    function stopConfetti(){
+        confettiParams.number = 0;
+    }
+
     function confettiLoop() {
         addConfetti();
         setTimeout(confettiLoop, 700 + Math.random() * 1700);
+        setTimeout(stopConfetti, 15000);
     }
 
     // Confetti code ends
