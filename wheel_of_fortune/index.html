@@ -37,7 +37,8 @@
                     <br/>
                     <img id="spin_button" src="spin_off.png" alt="Spin" onClick="startSpin();"/>
                     <br/><br/>
-                    &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;" style="color: white;">Play Again</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
+                    &nbsp;&nbsp;<a href="#" onClick="resetWheel(); return false;" style="color: white;">Play
+                    Again</a><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(reset)
                 </div>
             </td>
             <td width="438" height="582" class="the_wheel" align="center" align="center">
@@ -2479,11 +2480,11 @@
         window.cancelAnimationFrame(updateConfetti)
     }
 
-    function stopConfetti(){
+    function stopConfetti() {
         confettiParams.number = 0;
     }
 
-    function confettiLoop(){
+    function confettiLoop() {
         setInterval(addConfetti, 700);
         setTimeout(stopConfetti, 10000);
     }
@@ -2504,7 +2505,7 @@
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#fff', 'text': 'Headphones', 'textFillStyle': '#000'},
                 {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#009a3e', 'text': 'Shopping Voucher','textFontSize': 10,  'textFillStyle': '#000'},
+                {'fillStyle': '#009a3e', 'text': 'Shopping Voucher', 'textFontSize': 10, 'textFillStyle': '#000'},
                 {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
                 {'fillStyle': '#fff', 'text': 'Water bottle', 'textFillStyle': '#000'},
                 {'fillStyle': '#e31119', 'text': 'Try Again', 'textFillStyle': '#000'},
@@ -2633,11 +2634,15 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if(indicatedSegment.text !== 'Try Again'){
+        if (indicatedSegment.text !== 'Try Again') {
             confettiParams.number = 70;
-            prize.innerHTML = `A ${indicatedSegment.text}!`;
             confettiLoop();
-        }else{
+            if ((indicatedSegment.text === 'Shopping Voucher') || (indicatedSegment.text === 'Water bottle') || (indicatedSegment.text === 'Mbuzi') || (indicatedSegment.text === 'Hoodie')) {
+                prize.innerHTML = `A ${indicatedSegment.text}!`;
+            } else {
+                prize.innerHTML = `${indicatedSegment.text}!`;
+            }
+        } else {
             stopConfetti();
             prize.innerHTML = `Try Again`;
         }
