@@ -56,6 +56,7 @@
         </tr>
     </table>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script>
 
@@ -2506,13 +2507,17 @@
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
+                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': 'Cap', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': 'Cap', 'textFillStyle': '#fff'},
+                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': 'Wristband', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': 'Wristband', 'textFillStyle': '#fff'},
+                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': '50 Br.', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': '50 Br.', 'textFillStyle': '#fff'},
+                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2634,14 +2639,29 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if (indicatedSegment.text !== 'Try Again') {
+        if (indicatedSegment.text !== 'Thank You') {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
+            updateCount(indicatedSegment.text);
         } else {
             stopConfetti();
             prize.innerHTML = `Try Again`;
         }
+    }
+
+    //const axios = require('axios')
+
+    function updateCount(item){
+        let url = '/spinthewheel/wheel_of_fortune/count.php?item=' + item
+        console.log(url)
+        axios.get(url)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 </script>
 </body>
