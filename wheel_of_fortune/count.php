@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','spin');
+$conn = mysqli_connect('localhost','root','root','spin');
 
 if(isset($_GET)){
     $column = '';

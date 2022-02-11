@@ -2507,17 +2507,13 @@
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
-                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': 'Cap', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Cap', 'textFillStyle': '#fff'},
-                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': 'Wristband', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Wristband', 'textFillStyle': '#fff'},
-                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
                 {'fillStyle': '#09335f', 'text': '50 Br.', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': '50 Br.', 'textFillStyle': '#fff'},
-                //{'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2653,7 +2649,7 @@
     //const axios = require('axios')
 
     function updateCount(item){
-        let url = '/spinthewheel/wheel_of_fortune/count.php?item=' + item
+        let url = 'count.php?item=' + item
         console.log(url)
         axios.get(url)
         .then((res) => {
