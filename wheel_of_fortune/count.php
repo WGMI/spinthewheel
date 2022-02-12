@@ -2,7 +2,7 @@
 
 $conn = mysqli_connect('localhost','root','root','spin');
 
-if(isset($_GET)){
+if(isset($_GET['item'])){
     $column = '';
     switch($_GET['item']){
         case 'T-shirt':

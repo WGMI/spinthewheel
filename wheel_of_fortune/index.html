@@ -2651,7 +2651,7 @@
     function updateCount(item){
         let url = 'count.php?item=' + item
         console.log(url)
-        axios.get(url)
+        axios.get('http://159.223.132.125/api/temp?item='+item)
         .then((res) => {
             console.log(res)
         })
