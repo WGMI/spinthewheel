@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>BetKing Spin the Wheel</title>
+    <title>Blue Band</title>
     <link rel="stylesheet" href="main.css" type="text/css"/>
 </head>
-<body>
+<body style="background-color: #ffd601;">
 <div align="left" style="position: absolute;margin-top: 200px; padding-left: 20px;">
-    <img src="brand-logo.svg"/>
+    <!-- <img src="bblogo.png"/> -->
     <!-- <img src="winner.png"/> -->
 </div>
 <div align="center">
-    <img class="back_img" src="betking_background.png" alt="background image">
-    <h1 style="color: white; margin-top: 2rem;">Win Like a King</h1>
-    <p style="color: white">Choose a power setting then press the SPIN button to see your prize.</p>
+    <!-- <img class="back_img" src="betking_background.png" alt="background image"> -->
+    <h1 style="color: blue; margin-top: 2rem;">Spin the Wheel</h1>
+    <p style="color: blue">Choose a power setting then press the SPIN button to see your prize.</p>
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
@@ -2503,17 +2503,18 @@
         'textAlignment': 'outer', // Align text to outside of wheel.
         'textMargin': 8,
         'textFontFamily': 'monospace',
-        'numSegments': 8,         // Specify number of segments.
+        'numSegments': 9,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Cap', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Wristband', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': '50 Br.', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Thank You', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': 'Tumbler', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#09335f', 'text': 'Lunch Box', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2526,7 +2527,7 @@
             },
         'pins':				// Turn pins on.
             {
-                'number': 12,
+                'number': 10,
                 'fillStyle': 'silver',
                 'outerRadius': 4,
             }
@@ -2635,7 +2636,7 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if (indicatedSegment.text !== 'Thank You') {
+        if (indicatedSegment.text !== 'Try Again') {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
