@@ -11,8 +11,8 @@
 </div>
 <div align="center">
     <!-- <img class="back_img" src="betking_background.png" alt="background image"> -->
-    <h1 style="color: blue; margin-top: 2rem;">Spin the Wheel</h1>
-    <p style="color: blue">Choose a power setting then press the SPIN button to see your prize.</p>
+    <h1 style="color: #3f50a0; margin-top: 2rem;">Pendo La Mama</h1>
+    <p style="color: #3f50a0">Choose a power setting then press the SPIN button to see your prize.</p>
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
@@ -2506,16 +2506,16 @@
         'numSegments': 10,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#09335f', 'text': 'Tumbler', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Lunch Box', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'T-shirt', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Apron', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#09335f', 'text': 'Leso', 'textFillStyle': '#fff'},
-                {'fillStyle': '#179db3', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#00044c', 'text': 'Tumbler', 'textFillStyle': '#fff'},
+                {'fillStyle': '#3f50a0', 'text': 'Woven Bag', 'textFillStyle': '#fff'},
+                {'fillStyle': '#00044c', 'text': 'Lunch Box', 'textFillStyle': '#fff'},
+                {'fillStyle': '#3f50a0', 'text': 'Woven Bag', 'textFillStyle': '#fff'},
+                {'fillStyle': '#00044c', 'text': 'T-shirt', 'textFillStyle': '#fff'},
+                {'fillStyle': '#3f50a0', 'text': 'Woven Bag', 'textFillStyle': '#fff'},
+                {'fillStyle': '#00044c', 'text': 'Apron', 'textFillStyle': '#fff'},
+                {'fillStyle': '#3f50a0', 'text': 'Woven Bag', 'textFillStyle': '#fff'},
+                {'fillStyle': '#00044c', 'text': 'Leso', 'textFillStyle': '#fff'},
+                {'fillStyle': '#3f50a0', 'text': 'Woven Bag', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2637,14 +2637,14 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if (indicatedSegment.text !== 'Try Again') {
+        if (indicatedSegment.text !== 'Woven Bag') {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
             updateCount(indicatedSegment.text);
         } else {
             stopConfetti();
-            prize.innerHTML = `Try Again`;
+            prize.innerHTML = `Woven Bag`;
         }
     }
 
