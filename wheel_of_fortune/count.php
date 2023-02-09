@@ -3,22 +3,22 @@
 $conn = mysqli_connect('localhost','root','root','spin');
 
 if(isset($_GET['item'])){
-    $column = '';
-    switch($_GET['item']){
-        case 'T-shirt':
-            $column = 'Tshirts';
-            break;
-        case 'Cap':
-            $column = 'Caps';
-            break;
-        case 'Wristband':
-            $column = 'FiftyBR';
-            break;
-        case '50 Br.':
-            $column = 'Wristbands';
-            break;
-    }
-    echo $column;
+    // $column = '';
+    // switch($_GET['item']){
+    //     case 'T-shirt':
+    //         $column = 'Tshirts';
+    //         break;
+    //     case 'Cap':
+    //         $column = 'Caps';
+    //         break;
+    //     case 'Wristband':
+    //         $column = 'FiftyBR';
+    //         break;
+    //     case '50 Br.':
+    //         $column = 'Wristbands';
+    //         break;
+    // }
+    $column = $_GET['item'];
     mysqli_query($conn,'update counter set '.$column.' = '.$column.' + 1');
 }
 
