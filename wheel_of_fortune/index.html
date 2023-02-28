@@ -2504,18 +2504,29 @@
         'textAlignment': 'outer', // Align text to outside of wheel.
         'textMargin': 8,
         'textFontFamily': 'monospace',
-        'numSegments': 12,         // Specify number of segments.
+        'numSegments': 18,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#ff0000', 'text': 'Water bottle', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ff0000', 'text': 'Bottle', 'textFillStyle': '#fff'},
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ff0000', 'text': 'Minimuffin40', 'textFillStyle': '#fff'},
+
+                {'fillStyle': '#0065ff', 'text': 'Samosa60', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ff0000', 'text': 'Umbrella', 'textFillStyle': '#fff'},
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ff0000', 'text': 'T-shirt', 'textFillStyle': '#fff'},
+
+                {'fillStyle': '#ff0000', 'text': 'Cookie80', 'textFillStyle': '#fff'},
+                {'fillStyle': '#0065ff', 'text': 'Coffee70', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ff0000', 'text': 'Tshirt', 'textFillStyle': '#fff'},
+
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ff0000', 'text': 'Juices15', 'textFillStyle': '#fff'},
+                {'fillStyle': '#0065ff', 'text': 'Freezos10', 'textFillStyle': '#fff'},
+
                 {'fillStyle': '#ff0000', 'text': 'Reflector', 'textFillStyle': '#fff'},
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ff0000', 'text': 'Reflector', 'textFillStyle': '#fff'},
+
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ff0000', 'text': 'Umbrella', 'textFillStyle': '#fff'},
                 {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'}    
@@ -2656,7 +2667,7 @@
     function updateCount(item){
         let url = 'count.php?item=' + item
         console.log(url)
-        axios.get('http://159.223.132.125/api/temp?item='+item)
+        axios.get('http://144.126.220.111/api/temp?item='+item)
         .then((res) => {
             console.log(res)
             checkStock(item,res.data)
