@@ -2656,7 +2656,7 @@
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
-            updateCount(indicatedSegment.text);
+            updateCountInArea(indicatedSegment.text);
         } else {
             stopConfetti();
             prize.innerHTML = `Woven Bag`;
@@ -2669,6 +2669,23 @@
         let url = 'count.php?item=' + item
         console.log(url)
         axios.get('http://144.126.220.111/api/temp?item='+item)
+        .then((res) => {
+            console.log(res)
+            checkStock(item,res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
+    window.addEventListener("load", (event) => {
+        area = prompt('Your area eg Shell Lugogo');
+    });
+
+    function updateCountInArea(item){        
+        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area
+        console.log(url)
+        axios.get(url)
         .then((res) => {
             console.log(res)
             checkStock(item,res.data)
