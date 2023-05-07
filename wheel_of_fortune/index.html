@@ -2652,14 +2652,14 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
-        if (indicatedSegment.text !== 'Woven Bag') {
+        if (indicatedSegment.text !== 'Tshirt') {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
             updateCountInArea(indicatedSegment.text);
         } else {
             stopConfetti();
-            prize.innerHTML = `Woven Bag`;
+            prize.innerHTML = `Try Again`;
         }
     }
 
