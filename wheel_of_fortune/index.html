@@ -51,7 +51,9 @@
     <img src="shell-logo.png" alt="">
     <h1 style="color: #ff0000; margin-top: 2rem;">Spin the Wheel!</h1>
     <p style="color: #ff0000">Choose a power setting then press SPIN to see your prize.</p>
-    <p style="color: #ff0000" id="stock"><span id="keyholder">X Key Holders won</span> - <span id="cap">X Caps won</span> - <span id="fuel">X Fuel Vouchers won</span></p>
+    <div id="winnings" onclick="hide()">
+        <p style="color: #ff0000" id="stock"><span id="keyholder">X Key Holders won</span> - <span id="cap">X Caps won</span> - <span id="fuel">X Fuel Vouchers won</span></p>
+    </div>
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
@@ -2720,11 +2722,12 @@
     }
 
     window.addEventListener("load", (event) => {
+        name = prompt('Enter your full name');
         window.dialog.show()
     });
 
     function updateCountInArea(item){        
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area
+        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area+'&name='+name
         axios.get(url)
         .then((res) => {
             checkStock(item,res.data)
@@ -2744,7 +2747,7 @@
             break;
 
         case 'Fuel':
-            document.getElementById('fuel').innerHTML = currentcount + ' ' + item + ' won.'
+            document.getElementById('fuel').innerHTML = currentcount + ' ' + item + ' vouchers won.'
             break;
 
         case 'Cap':
@@ -2752,6 +2755,10 @@
             break;
         }
 
+    }
+
+    function hide(){
+        console.log(12)
     }
 </script>
 </body>
