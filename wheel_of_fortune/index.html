@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
     <title>Shell</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css" type="text/css"/>
 </head>
-<body style="background-color: #000000;">
+<body style="background-color: #000000;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+<dialog id="dialog">
+  <h1>Select your area</h1>
+  <select onchange="selectarea(this.value)">
+    <option>Select</option>
+    <option>Bugolobi 1</option>
+    <option>Bugolobi 2</option>
+    <option>Muyenga</option>
+    <option>Namugongo</option>
+    <option>Najjera</option>
+    <option>Sonde</option>
+    <option>Jinja</option>
+    <option>Kira Road</option>
+    <option>Lugogo</option>
+    <option>Makerere kikoni</option>
+    <option>Kasangati</option>
+    <option>Munyonyo</option>
+    <option>Kawanda</option>
+    <option>Kyanja</option>
+    <option>Gulu </option>
+    <option>Mbarara</option>
+    </select>
+</dialog>
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div align="left" style="position: absolute;margin-top: 200px; padding-left: 20px;">
     <!-- <img src="bblogo.png"/> -->
     <!-- <img src="winner.png"/> -->
@@ -14,6 +59,9 @@
     <img src="shell-logo.png" alt="">
     <h1 style="color: #ff0000; margin-top: 2rem;">Spin the Wheel!</h1>
     <p style="color: #ff0000">Choose a power setting then press SPIN to see your prize.</p>
+    <div id="winnings" onclick="hide()">
+        <p style="color: #ff0000" id="stock"><span id="keyholder">X Key Holders won</span> - <span id="cap">X Caps won</span> - <span id="fuel">X Fuel Vouchers won</span></p>
+    </div>
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
@@ -2507,14 +2555,14 @@
         'numSegments': 8,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#fff', 'text': 'Key Holder', 'textFillStyle': '#000'},
+                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#ff0000', 'text': 'Cap', 'textFillStyle': '#fff'},
+                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
                 {'fillStyle': '#ff0000', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Fuel', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Key Holder', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Tshirt', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Try Again', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Key Holder', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Key Holder', 'textFillStyle': '#fff'},
+                {'fillStyle': '#fff', 'text': 'Cap', 'textFillStyle': '#000'},
+                {'fillStyle': '#ff0000', 'text': 'Fuel', 'textFillStyle': '#fff'},
+                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#ff0000', 'text': 'Cap', 'textFillStyle': '#fff'},
                 // {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
 
                 // {'fillStyle': '#ff0000', 'text': 'Freezos', 'textFillStyle': '#fff'},
@@ -2560,6 +2608,11 @@
 
         // Play the sound.
         audio.play();
+    }
+
+    function selectarea(option){
+        window.dialog.close()
+        area = option
     }
 
     // Vars used by the code in this page to do power controls.
@@ -2667,10 +2720,8 @@
 
     function updateCount(item){
         let url = 'count.php?item=' + item
-        console.log(url)
         axios.get('http://144.126.220.111/api/temp?item='+item)
         .then((res) => {
-            console.log(res)
             checkStock(item,res.data)
         })
         .catch((err) => {
@@ -2679,15 +2730,14 @@
     }
 
     window.addEventListener("load", (event) => {
-        area = prompt('Your area eg Shell Lugogo');
+        name = prompt('Enter your full name');
+        window.dialog.show()
     });
 
     function updateCountInArea(item){        
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area
-        console.log(url)
+        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area+'&name='+name
         axios.get(url)
         .then((res) => {
-            console.log(res)
             checkStock(item,res.data)
         })
         .catch((err) => {
@@ -2696,7 +2746,27 @@
     }
 
     function checkStock(item,count){
-        //alert(count + ' ' + item + '(s)' + ' won') 
+        let currentcount = count[0]['count']
+        console.log(item,count[0]['count'])
+        // Assuming the <span> element has an id attribute of 'result'
+        switch (item) {
+        case 'Key Holder':
+            document.getElementById('keyholder').innerHTML = currentcount + ' ' + item + ' won.'
+            break;
+
+        case 'Fuel':
+            document.getElementById('fuel').innerHTML = currentcount + ' ' + item + ' vouchers won.'
+            break;
+
+        case 'Cap':
+            document.getElementById('cap').innerHTML = currentcount + ' ' + item + ' won.'
+            break;
+        }
+
+    }
+
+    function hide(){
+        console.log(12)
     }
 </script>
 </body>
