@@ -10,7 +10,7 @@
 <dialog id="dialog">
   <h1>Select your area</h1>
   <select onchange="selectarea(this.value)">
-    <option>Select</option>
+    <!-- <option>Select</option>
     <option>Bugolobi 1</option>
     <option>Bugolobi 2</option>
     <option>Muyenga</option>
@@ -26,7 +26,24 @@
     <option>Kawanda</option>
     <option>Kyanja</option>
     <option>Gulu </option>
+    <option>Mbarara</option> -->
+    <option>Nabingo</option>
+    <option>Makerere kikoni</option>
+    <option>Kasangati</option>
+    <option>Kira Rd.</option>
+    <option>Munyonyo</option>
+    <option>Kyanja</option>
+    <option>Kawanda</option>
+    <option>Bugolobi 1</option>
+    <option>Bugolobi 2</option>
+    <option>Lugogo</option>
+    <option>Muyenga</option>
+    <option>Najjera</option>
+    <option>Ssonde</option>
+    <option>Jinja</option>
     <option>Mbarara</option>
+    <option>Najjanankumbi</option>
+
     </select>
 </dialog>
 
@@ -2705,6 +2722,8 @@
     function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
+        // Define the available items in each area
+
         if (indicatedSegment.text !== 'Sock') {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
@@ -2715,6 +2734,94 @@
             prize.innerHTML = `Try Again`;
         }
     }
+
+    // Define the available items in each area
+    const areas = [
+    {
+        area: "Nabingo",
+        items: ["Roundnecks", "Keyholders", "Caps"],
+    },
+    {
+        area: "Makerere kikoni",
+        items: ["Polos", "Roundnecks", "Caps"],
+    },
+    {
+        area: "Kasangati",
+        items: ["Polos", "Caps"],
+    },
+    {
+        area: "Kira Rd.",
+        items: ["Polos", "Caps", "Umbrellas"],
+    },
+    {
+        area: "Munyonyo",
+        items: ["Umbrellas", "Polos", "Caps"],
+    },
+    {
+        area: "Kyanja",
+        items: ["Polos", "Caps"],
+    },
+    {
+        area: "Kawanda",
+        items: ["Polos", "Roundnecks", "Caps"],
+    },
+    {
+        area: "Bugolobi 1",
+        items: ["Polos", "Caps", "Umbrellas"],
+    },
+    {
+        area: "Bugolobi 2",
+        items: ["Polos", "Caps", "Umbrellas"],
+    },
+    {
+        area: "Lugogo",
+        items: ["Polos", "Caps", "Umbrellas"],
+    },
+    {
+        area: "Muyenga",
+        items: ["Polos", "Caps", "Umbrellas"],
+    },
+    {
+        area: "Najjera",
+        items: ["Polos", "Caps"],
+    },
+    {
+        area: "Ssonde",
+        items: ["Polos", "Caps"],
+    },
+    {
+        area: "Jinja",
+        items: ["Roundnecks", "Caps"],
+    },
+    {
+        area: "Mbarara",
+        items: ["Roundnecks", "Caps"],
+    },
+    {
+        area: "Najjanankumbi",
+        items: ["Polos", "Caps"],
+    },
+    ];
+
+    // Function to check if an item is available in the selected area
+    function checkItemAvailability(selectedArea, selectedItem) {
+    const area = areas.find((area) => area.area === selectedArea);
+    if (area && area.items.includes(selectedItem)) {
+        return true; // Item is available
+    }
+    return false; // Item is not available
+    }
+
+    // Example usage
+    const selectedArea = "Nabingo";
+    const selectedItem = "Roundnecks";
+
+    if (checkItemAvailability(selectedArea, selectedItem)) {
+    console.log("Item is available");
+    } else {
+    console.log("Try Again");
+    }
+
 
     //const axios = require('axios')
 
