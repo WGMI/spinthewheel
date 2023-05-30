@@ -2724,7 +2724,14 @@
         // In a real project probably want to do something more interesting than this with the result.
         // Define the available items in each area
 
-        if (indicatedSegment.text !== 'Sock') {
+        // Example usage
+
+        if (checkItemAvailability(area, indicatedSegment.text)) {
+        console.log("Item is available");
+        } else {
+        console.log("Try Again");
+        }
+        if (checkItemAvailability(area, indicatedSegment.text)) {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
@@ -2812,16 +2819,6 @@
     return false; // Item is not available
     }
 
-    // Example usage
-    const selectedArea = "Nabingo";
-    const selectedItem = "Roundnecks";
-
-    if (checkItemAvailability(selectedArea, selectedItem)) {
-    console.log("Item is available");
-    } else {
-    console.log("Try Again");
-    }
-
 
     //const axios = require('axios')
 
@@ -2841,7 +2838,7 @@
         window.dialog.show()
     });
 
-    function updateCountInArea(item){        
+    function updateCountInArea(item){     
         let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area+'&name='+name
         axios.get(url)
         .then((res) => {
