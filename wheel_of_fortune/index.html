@@ -2616,7 +2616,7 @@
     function selectarea(option){
         window.dialog.close()
         // area = option
-        area = "Embu"
+        area = "NA"
     }
 
     // Vars used by the code in this page to do power controls.
@@ -2832,7 +2832,7 @@
     });
 
     function updateCountInArea(item){     
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area+'&name='+name
+        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+'NA'+'&name='+name
         axios.get(url)
         .then((res) => {
             checkStock(item,res.data)
