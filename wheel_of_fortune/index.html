@@ -2713,12 +2713,12 @@
 
         // Example usage
 
-        if (checkItemAvailability(area, indicatedSegment.text)) {
+        if (checkItemAvailability('NA', indicatedSegment.text)) {
         console.log("Item is available");
         } else {
         console.log("Try Again");
         }
-        if (checkItemAvailability(area, indicatedSegment.text)) {
+        if (checkItemAvailability('NA', indicatedSegment.text)) {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
@@ -2799,6 +2799,9 @@
 
     // Function to check if an item is available in the selected area
     function checkItemAvailability(selectedArea, selectedItem) {
+        if(selectedArea == 'NA'){
+            return true
+        }
         const area = areas.find((area) => area.area === selectedArea);
         if (area && area.items.includes(selectedItem)) {
             let limitedareas = ["Makerere kikoni","Bugolobi 1","Bugolobi 2","Naalya"]
