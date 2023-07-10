@@ -2551,35 +2551,17 @@
         'textFontSize': 14,         // Set default font size for the segments.
         'textOrientation': 'horizontal', // Make text curved.
         'textAlignment': 'outer', // Align text to outside of wheel.
-        'textMargin': 8,
+        'textMargin': 6,
         'textFontFamily': 'monospace',
-        'numSegments': 8,         // Specify number of segments.
+        'numSegments': 6,         // Specify number of segments.
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Parasol', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Tshirt', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Pen', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ff0000', 'text': 'Cap', 'textFillStyle': '#fff'},
                 {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
                 {'fillStyle': '#ff0000', 'text': 'Notebook', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
-
-                // {'fillStyle': '#ff0000', 'text': 'Freezos', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Coffee', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#ff0000', 'text': 'Tshirt', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
-
-                // {'fillStyle': '#ff0000', 'text': 'Juices', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Reflector', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#ff0000', 'text': 'Cap', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Reflector', 'textFillStyle': '#fff'},
-
-                // {'fillStyle': '#ff0000', 'text': 'Freezos', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#ff0000', 'text': 'Umbrella', 'textFillStyle': '#fff'},
-                // {'fillStyle': '#0065ff', 'text': 'Cap', 'textFillStyle': '#fff'}    
+                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
+                {'fillStyle': '#ff0000', 'text': 'Pen', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2614,7 +2596,7 @@
     function selectarea(option){
         window.dialog.close()
         // area = option
-        area = "Embu"
+        area = "NA"
     }
 
     // Vars used by the code in this page to do power controls.
@@ -2711,12 +2693,12 @@
 
         // Example usage
 
-        if (checkItemAvailability(area, indicatedSegment.text)) {
+        if (checkItemAvailability('NA', indicatedSegment.text)) {
         console.log("Item is available");
         } else {
         console.log("Try Again");
         }
-        if (checkItemAvailability(area, indicatedSegment.text)) {
+        if (checkItemAvailability('NA', indicatedSegment.text)) {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
@@ -2797,6 +2779,9 @@
 
     // Function to check if an item is available in the selected area
     function checkItemAvailability(selectedArea, selectedItem) {
+        if(selectedArea == 'NA'){
+            return true
+        }
         const area = areas.find((area) => area.area === selectedArea);
         if (area && area.items.includes(selectedItem)) {
             let limitedareas = ["Makerere kikoni","Bugolobi 1","Bugolobi 2","Naalya"]
@@ -2830,7 +2815,7 @@
     });
 
     function updateCountInArea(item){     
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+area+'&name='+name
+        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+'NA'+'&name='+name
         axios.get(url)
         .then((res) => {
             checkStock(item,res.data)
