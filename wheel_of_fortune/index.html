@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NCBA</title>
+    <title>M&M</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css" type="text/css"/>
 </head>
-<body style="background-color: #000000;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<style>
+    #fadeImage {
+      position: absolute; /* or "fixed" depending on your needs */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+<body style="background-color: #ffcc00;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 <!-- <dialog id="dialog">
   <h1>Select your area</h1>
@@ -57,18 +67,16 @@
 </div>
 <div align="center">
     <!-- <img class="back_img" src="betking_background.png" alt="background image"> -->
-    <img src="ncbalogo.png" alt="">
     <h1 style="color: #ff0000; margin-top: 2rem;">Spin the Wheel!</h1>
     <p style="color: #ff0000">Choose a power setting then press SPIN to see your prize.</p>
-    <div id="winnings" onclick="hide()">
-        <p style="color: #ff0000" id="stock"><span id="keyholder">X Key Holders won</span> - <span id="cap">X Caps won</span> - <span id="fuel">X Fuel Vouchers won</span></p>
-    </div>
+    
     <br/>
     <div class="line"><span id="prize"></span>
     </div>
     <table cellpadding="0" cellspacing="0" border="0" style="margin-left: auto; margin-right: 7rem; margin-top: -4rem;">
         <tr>
             <td width="438" height="582" class="the_wheel" align="center" align="center">
+                <!-- <img src="tree.png" alt="" width="438" height="582" id="fadeImage"> -->
                 <canvas id="canvas" width="434" height="434">
                     <p style="{color: black}" align="center">Sorry, your browser doesn't support canvas. Please try
                         another.</p>
@@ -2553,15 +2561,17 @@
         'textAlignment': 'outer', // Align text to outside of wheel.
         'textMargin': 6,
         'textFontFamily': 'monospace',
-        'numSegments': 6,         // Specify number of segments.//
+        'numSegments': 8,         // Specify number of segments.//
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Full Tank', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Movie ticket', 'textFillStyle': '#fff'},
-                {'fillStyle': '#fff', 'text': 'Try Again', 'textFillStyle': '#000'},
-                {'fillStyle': '#ff0000', 'text': 'Go Karting', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ffcc00', 'text': 'Bowl', 'textFillStyle': '#000'},
+                {'fillStyle': '#491e11', 'text': 'Airtime', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ffcc00', 'text': 'Skittles', 'textFillStyle': '#000'},
+                {'fillStyle': '#491e11', 'text': 'Maltesers', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ffcc00', 'text': 'M&Ms', 'textFillStyle': '#000'},
+                {'fillStyle': '#491e11', 'text': 'Skittles', 'textFillStyle': '#fff'},
+                {'fillStyle': '#ffcc00', 'text': 'Snickers', 'textFillStyle': '#000'},
+                {'fillStyle': '#491e11', 'text': 'M$Ms', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2574,7 +2584,7 @@
             },
         'pins':				// Turn pins on.
             {
-                'number': 10,
+                'number': 8,
                 'fillStyle': 'silver',
                 'outerRadius': 4,
             }
@@ -2703,6 +2713,27 @@
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
             updateCountInArea(indicatedSegment.text);
+            let fadeImage = document.getElementById('fadeImage');
+            console.log(fadeImage)
+
+            function fadeIn() {
+                fadeImage.style.opacity = 1;
+            }
+
+            function fadeOut() {
+                fadeImage.style.opacity = 0;
+            }
+
+            // Initial fade in
+            fadeIn();
+
+            // Set interval for fading in and out
+            setInterval(function() {
+            fadeOut();
+            setTimeout(function() {
+                fadeIn();
+            }, 1000); // Adjust this delay as needed
+            }, 2000); // Adjust this interval as needed
         } else {
             stopConfetti();
             prize.innerHTML = `Try Again`;
@@ -2808,11 +2839,6 @@
             console.log(err)
         })
     }
-
-    window.addEventListener("load", (event) => {
-        name = prompt('Enter your full name');
-        window.dialog.show()
-    });
 
     function updateCountInArea(item){     
         let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+'NA'+'&name='+name
