@@ -2694,7 +2694,7 @@
     // -------------------------------------------------------
     // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
     // -------------------------------------------------------
-    function alertPrize(indicatedSegment) {
+    async function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
         // Define the available items in each area
@@ -2706,8 +2706,21 @@
             item = 'Speaker'
         }
 
-        if (checkItemAvailability(area,item)) {
-            //reduceItem(area,item)
+        try {
+            const apiUrl = 'http://144.126.220.111/api/checkcount';
+            const params = {
+                location: area,
+                gift: item
+            };
+
+            const response = await axios.get(apiUrl, { params });
+            console.log(response.data.count[item]);
+            if(response.data.count[item] <= 0){
+                stopConfetti();
+                prize.innerHTML = `Try Again`;
+                return
+            }
+
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
@@ -2733,10 +2746,42 @@
                 fadeIn();
             }, 1000); // Adjust this delay as needed
             }, 2000); // Adjust this interval as needed
-        } else {
-            stopConfetti();
-            prize.innerHTML = `Try Again`;
+
+        } catch (error) {
+            console.log('Error:', error);
         }
+
+        // if (itemcount > 0) {
+        //     reduceItem(area,item)
+        //     confettiParams.number = 70;
+        //     prize.innerHTML = `${indicatedSegment.text}!`;
+        //     confettiLoop();
+        //     updateCountInArea(indicatedSegment.text);
+        //     let fadeImage = document.getElementById('fadeImage');
+        //     console.log(fadeImage)
+
+        //     function fadeIn() {
+        //         fadeImage.style.opacity = 1;
+        //     }
+
+        //     function fadeOut() {
+        //         fadeImage.style.opacity = 0;
+        //     }
+
+        //     // Initial fade in
+        //     fadeIn();
+
+        //     // Set interval for fading in and out
+        //     setInterval(function() {
+        //     fadeOut();
+        //     setTimeout(function() {
+        //         fadeIn();
+        //     }, 1000); // Adjust this delay as needed
+        //     }, 2000); // Adjust this interval as needed
+        // } else {
+        //     stopConfetti();
+        //     prize.innerHTML = `Try Again`;
+        // }
     }
 
     // Define the available items in each area
@@ -2807,8 +2852,25 @@
     },
     ];
 
+    async function reduceItem(selectedArea, selectedItem) {
+        console.log('Reduce:')
+        console.log(selectedArea,selectedItem)
+        try {
+            const apiUrl = 'http://144.126.220.111/api/reduce';
+            const params = {
+                location: selectedArea,
+                gift: selectedItem
+            };
+
+            const response = await axios.get(apiUrl, { params });
+            console.log(response.data.count[selectedItem]);
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    }
 
     async function checkItemAvailability(selectedArea, selectedItem) {
+        let count = 0
         console.log(selectedArea,selectedItem)
         try {
             const apiUrl = 'http://144.126.220.111/api/checkcount';
@@ -2822,6 +2884,9 @@
         } catch (error) {
             console.error('Error:', error.response.data);
         }
+
+
+        return count
     }
 
 
