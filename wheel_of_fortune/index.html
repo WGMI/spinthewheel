@@ -2567,7 +2567,7 @@
                 {'fillStyle': '#fd0907', 'text': 'Spa Voucher', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ffcc00', 'text': 'Wine Bottle', 'textFillStyle': '#000'},
                 {'fillStyle': '#fd0907', 'text': 'Chocolate', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ffcc00', 'text': 'Wine Bottle', 'textFillStyle': '#000'},
+                {'fillStyle': '#ffcc00', 'text': 'Dinner Voucher', 'textFillStyle': '#000'},
                 {'fillStyle': '#fd0907', 'text': 'B. Speaker', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ffcc00', 'text': 'Pen', 'textFillStyle': '#000'},
                 {'fillStyle': '#fd0907', 'text': 'Hoodies', 'textFillStyle': '#fff'},
@@ -2716,17 +2716,17 @@
             };
 
             const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[item]);
-            if(response.data.count[item] <= 0){
-                stopConfetti();
-                prize.innerHTML = `You Have Another Chance`;
-                return
-            }
+            // console.log(response.data.count[item]);
+            // if(response.data.count[item] <= 0){
+            //     stopConfetti();
+            //     prize.innerHTML = `You Have Another Chance`;
+            //     return
+            // }
 
             confettiParams.number = 70;
-            prize.innerHTML = `${indicatedSegment.text}!`;
+            prize.innerHTML = 'Spa Voucher'//`${indicatedSegment.text}!`;
             confettiLoop();
-            updateCountInArea(indicatedSegment.text);
+            
             let fadeImage = document.getElementById('fadeImage');
             console.log(fadeImage)
 
