@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Shell</title>
+    <title>Brisk Marketing</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css" type="text/css"/>
 </head>
@@ -15,26 +15,7 @@
       transition: opacity 1s ease-in-out;
     }
   </style>
-<body style="background-color: #ffcc00;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-<dialog id="dialog" open>
-  <h1>Select your area</h1>
-  <select onchange="selectarea(this.value)">
-    <option>South Street</option>
-    <option>Lugogo</option>
-    <option>Ntinda</option>
-    <option>Banda</option>
-    <option>Makindye</option>
-    <option>Wandegeya</option>
-    <option>Mukono</option>
-    <option>Munyonyo</option>
-    <option>Kira Road</option>
-    <option>Bugolobi</option>
-    <option>Bunga</option>
-    <option>Ndagire</option>
-    <option>Bukoto</option>
-</select>
-</dialog>
+<body style="background-color: #fff;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -62,10 +43,9 @@
 </div>
 <div align="center">
     <!-- <img class="back_img" src="betking_background.png" alt="background image"> -->
-    <img src="shell-logo.png" alt="">
+    <img src="brisklogo.png" alt="">
     <h1 style="color: #ff0000; margin-top: 2rem;">Spin the Wheel!</h1>
     <p style="color: #ff0000">Choose a power setting then press SPIN to see your prize.</p>
-    <p style="color: #ff0000" id="area-label"></p>
     
     <br/>
     <div class="line"><span id="prize"></span>
@@ -2563,14 +2543,14 @@
         'numSegments': 8,         // Specify number of segments.//
         'segments':             // Define segments including colour and text.
             [                               // font size and test colour overridden on backrupt segments.
-                {'fillStyle': '#ffcc00', 'text': 'Movie Tickets', 'textFillStyle': '#000'},
-                {'fillStyle': '#fd0907', 'text': 'Spa Voucher', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ffcc00', 'text': 'Dinner Voucher', 'textFillStyle': '#000'},
-                {'fillStyle': '#fd0907', 'text': 'Chocolate', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ffcc00', 'text': 'Wine Bottle', 'textFillStyle': '#000'},
-                {'fillStyle': '#fd0907', 'text': 'B. Speaker', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ffcc00', 'text': 'Pen', 'textFillStyle': '#000'},
-                {'fillStyle': '#fd0907', 'text': 'Hoodies', 'textFillStyle': '#fff'},
+                {'fillStyle': '#2d2e5f', 'text': 'Movie Tickets', 'textFillStyle': '#fff'},
+                {'fillStyle': '#cf6a33', 'text': 'Spa Voucher', 'textFillStyle': '#fff'},
+                {'fillStyle': '#2d2e5f', 'text': 'Dinner Voucher', 'textFillStyle': '#fff'},
+                {'fillStyle': '#cf6a33', 'text': 'Chocolate', 'textFillStyle': '#fff'},
+                {'fillStyle': '#2d2e5f', 'text': 'Wine Bottle', 'textFillStyle': '#fff'},
+                {'fillStyle': '#cf6a33', 'text': 'B. Speaker', 'textFillStyle': '#fff'},
+                {'fillStyle': '#2d2e5f', 'text': 'Pen', 'textFillStyle': '#fff'},
+                {'fillStyle': '#cf6a33', 'text': 'Hoodies', 'textFillStyle': '#fff'},
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2600,13 +2580,6 @@
 
         // Play the sound.
         audio.play();
-    }
-
-    function selectarea(option){
-        window.dialog.close()
-        area = option
-        document.getElementById('area-label').innerHTML = area
-        console.log(area)
     }
 
     // Vars used by the code in this page to do power controls.
@@ -2703,26 +2676,7 @@
 
         // Example usage
 
-        let item = indicatedSegment.text.replace(/\s+/g, '')
-        if (indicatedSegment.text == 'B. Speaker'){
-            item = 'Speaker'
-        }
-
-        try {
-            const apiUrl = 'http://144.126.220.111/api/checkcount';
-            const params = {
-                location: area,
-                gift: item
-            };
-
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[item]);
-            if(response.data.count[item] <= 0){
-                stopConfetti();
-                prize.innerHTML = `You Have Another Chance`;
-                return
-            }
-
+        if (1==1) {
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
@@ -2748,196 +2702,10 @@
                 fadeIn();
             }, 1000); // Adjust this delay as needed
             }, 2000); // Adjust this interval as needed
-
-        } catch (error) {
-            console.log('Error:', error);
+        } else {
+            stopConfetti();
+            prize.innerHTML = `Try Again`;
         }
-
-        // if (itemcount > 0) {
-        //     reduceItem(area,item)
-        //     confettiParams.number = 70;
-        //     prize.innerHTML = `${indicatedSegment.text}!`;
-        //     confettiLoop();
-        //     updateCountInArea(indicatedSegment.text);
-        //     let fadeImage = document.getElementById('fadeImage');
-        //     console.log(fadeImage)
-
-        //     function fadeIn() {
-        //         fadeImage.style.opacity = 1;
-        //     }
-
-        //     function fadeOut() {
-        //         fadeImage.style.opacity = 0;
-        //     }
-
-        //     // Initial fade in
-        //     fadeIn();
-
-        //     // Set interval for fading in and out
-        //     setInterval(function() {
-        //     fadeOut();
-        //     setTimeout(function() {
-        //         fadeIn();
-        //     }, 1000); // Adjust this delay as needed
-        //     }, 2000); // Adjust this interval as needed
-        // } else {
-        //     stopConfetti();
-        //     prize.innerHTML = `Try Again`;
-        // }
-    }
-
-    // Define the available items in each area
-    const areas = [
-    {
-        area: "Nabingo",
-        items: ["Tshirts",  "Caps","Fuel"],
-    },
-    {
-        area: "Makerere kikoni",
-        items: ["Tshirts",  "Caps","Fuel"],
-    },
-    {
-        area: "Naalya",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Kira Rd.",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Munyonyo",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Kyanja",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Kawanda",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Bugolobi 1",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Bugolobi 2",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Lugogo",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Muyenga",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Najjera",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Ssonde",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Jinja",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Mbarara",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Najjanankumbi",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    ];
-
-    async function reduceItem(selectedArea, selectedItem) {
-        console.log('Reduce:')
-        console.log(selectedArea,selectedItem)
-        try {
-            const apiUrl = 'http://144.126.220.111/api/reduce';
-            const params = {
-                location: selectedArea,
-                gift: selectedItem
-            };
-
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[selectedItem]);
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-    }
-
-    async function checkItemAvailability(selectedArea, selectedItem) {
-        let count = 0
-        console.log(selectedArea,selectedItem)
-        try {
-            const apiUrl = 'http://144.126.220.111/api/checkcount';
-            const params = {
-                location: selectedArea,
-                gift: selectedItem
-            };
-
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[selectedItem]);
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-
-
-        return count
-    }
-
-
-    //const axios = require('axios')
-
-    function updateCount(item){
-        let url = 'count.php?item=' + item
-        axios.get('http://144.126.220.111/api/temp?item='+item)
-        .then((res) => {
-            checkStock(item,res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function updateCountInArea(item){     
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+'NA'+'&name='+name
-        axios.get(url)
-        .then((res) => {
-            checkStock(item,res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function checkStock(item,count){
-        let currentcount = count[0]['count']
-        console.log(item,count[0]['count'])
-        // Assuming the <span> element has an id attribute of 'result'
-        switch (item) {
-        case 'Key Holder':
-            document.getElementById('keyholder').innerHTML = currentcount + ' ' + item + ' won.'
-            break;
-
-        case 'Fuel':
-            document.getElementById('fuel').innerHTML = currentcount + ' ' + item + ' vouchers won.'
-            break;
-
-        case 'Cap':
-            document.getElementById('cap').innerHTML = currentcount + ' ' + item + ' won.'
-            break;
-        }
-
-    }
-
-    function hide(){
-        console.log(12)
     }
 </script>
 </body>
