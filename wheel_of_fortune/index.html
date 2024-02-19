@@ -19,7 +19,7 @@
 
 <dialog id="dialog" open>
   <h1>Select your area</h1>
-  <select onchange="selectarea(this.value)">
+  <select>
     <option>Choose</option>
     <option>South Street</option>
     <option>Lugogo</option>
@@ -2604,12 +2604,7 @@
         audio.play();
     }
 
-    function selectarea(option){
-        window.dialog.close()
-        area = option
-        document.getElementById('area-label').innerHTML = area
-        console.log(area)
-    }
+    
 
     // Vars used by the code in this page to do power controls.
     let wheelPower = 0;
