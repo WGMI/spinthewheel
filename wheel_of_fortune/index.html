@@ -116,7 +116,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script>
 
-    let area
 
     //Winwheel code starts
 
@@ -2723,7 +2722,6 @@
             confettiParams.number = 70;
             prize.innerHTML = `${indicatedSegment.text}!`;
             confettiLoop();
-            updateCountInArea(indicatedSegment.text);
             let fadeImage = document.getElementById('fadeImage');
             console.log(fadeImage)
 
@@ -2782,74 +2780,6 @@
         //     prize.innerHTML = `Try Again`;
         // }
     }
-
-    // Define the available items in each area
-    const areas = [
-    {
-        area: "Nabingo",
-        items: ["Tshirts",  "Caps","Fuel"],
-    },
-    {
-        area: "Makerere kikoni",
-        items: ["Tshirts",  "Caps","Fuel"],
-    },
-    {f
-        area: "Naalya",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Kira Rd.",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Munyonyo",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Kyanja",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Kawanda",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Bugolobi 1",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Bugolobi 2",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Lugogo",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Muyenga",
-        items: ["Tshirts", "Caps", "Fuel"],
-    },
-    {
-        area: "Najjera",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Ssonde",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Jinja",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Mbarara",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    {
-        area: "Najjanankumbi",
-        items: ["Tshirts", "Caps","Fuel"],
-    },
-    ];
 
     async function reduceItem(selectedArea, selectedItem) {
         console.log('Reduce:')
