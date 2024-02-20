@@ -18,23 +18,9 @@
 <body style="background-color: #ffcc00;"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 <dialog id="dialog" open>
-  <h1>Select your area</h1>
-  <select>
-    <option>Choose</option>
-    <option>South Street</option>
-    <option>Lugogo</option>
-    <option>Ntinda</option>
-    <option>Banda</option>
-    <option>Makindye</option>
-    <option>Wandegeya</option>
-    <option>Mukono</option>
-    <option>Munyonyo</option>
-    <option>Kira Road</option>
-    <option>Bugolobi</option>
-    <option>Bunga</option>
-    <option>Ndagire</option>
-    <option>Bukoto</option>
-</select>
+  <h1>Select your items</h1>
+  <div id="itemlist"></div>
+  <button onclick="closeitemsdialog()" style="background-color: #ffcc00;">Done</button>
 </dialog>
 
 <div class="modal" tabindex="-1" role="dialog">
@@ -2692,180 +2678,99 @@
     // -------------------------------------------------------
     // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters.
     // -------------------------------------------------------
-    async function alertPrize(indicatedSegment) {
+
+    let availableitems = []
+
+    function populateItemList(items) {
+        const itemListDiv = document.getElementById("itemlist");
+        
+        // Clear any existing content
+        itemListDiv.innerHTML = "";
+
+        // Iterate through the items and create checkboxes
+        items.forEach(item => {
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = item.toLowerCase(); // Use lowercase item name as ID
+            const label = document.createElement("label");
+            label.htmlFor = item.toLowerCase(); // Associate label with checkbox
+            label.appendChild(document.createTextNode(item));
+
+            // Append checkbox and label to the item list div
+            itemListDiv.appendChild(checkbox);
+            itemListDiv.appendChild(label);
+            itemListDiv.appendChild(document.createElement("br")); // Add line break for readability
+        });
+    }
+
+    function closeitemsdialog(){
+        const checkboxes = document.querySelectorAll('#dialog input[type="checkbox"]');
+  
+        // Iterate through checkboxes
+        checkboxes.forEach(checkbox => {
+            // If checkbox is checked, add its label text (item) to availableItems
+            if (checkbox.checked) {
+                availableitems.push(checkbox.nextElementSibling.textContent);
+            }
+        });
+
+        // Close the dialog
+        document.getElementById('dialog').close();
+    }
+
+    // Example usage:
+    const items = 
+    ['Movie Tickets',
+    'Spa Voucher',
+    'Wine Bottle',
+    'Chocolate',
+    'Wine Bottle',
+    'B. Speaker',
+    'Tshirts',
+    'Hoodies',
+    'Dinner Voucher']
+    window.addEventListener("load", populateItemList(items));
+
+
+    function alertPrize(indicatedSegment) {
         // Just alert to the user what happened.
         // In a real project probably want to do something more interesting than this with the result.
         // Define the available items in each area
 
         // Example usage
 
-        let item = indicatedSegment.text.replace(/\s+/g, '')
-        if (indicatedSegment.text == 'B. Speaker'){
-            item = 'Speaker'
+        if(!availableitems.includes(indicatedSegment.text)){
+            stopConfetti();
+            prize.innerHTML = `You Have Another Chance`;
+            return
+        }
+        
+        confettiParams.number = 70;
+        prize.innerHTML = `${indicatedSegment.text}!`;
+        confettiLoop();
+        let fadeImage = document.getElementById('fadeImage');
+        console.log(fadeImage)
+
+        function fadeIn() {
+            fadeImage.style.opacity = 1;
         }
 
-        try {
-            /*const apiUrl = 'http://144.126.220.111/api/checkcount';
-            const params = {
-                location: area,
-                gift: item
-            };
+        function fadeOut() {
+            fadeImage.style.opacity = 0;
+        }
 
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[item]);
-            if(response.data.count[item] <= 0){
-                stopConfetti();
-                prize.innerHTML = `You Have Another Chance`;
-                return
-            }*/
+        // Initial fade in
+        fadeIn();
 
-            confettiParams.number = 70;
-            prize.innerHTML = `${indicatedSegment.text}!`;
-            confettiLoop();
-            let fadeImage = document.getElementById('fadeImage');
-            console.log(fadeImage)
-
-            function fadeIn() {
-                fadeImage.style.opacity = 1;
-            }
-
-            function fadeOut() {
-                fadeImage.style.opacity = 0;
-            }
-
-            // Initial fade in
+        // Set interval for fading in and out
+        setInterval(function() {
+        fadeOut();
+        setTimeout(function() {
             fadeIn();
-
-            // Set interval for fading in and out
-            setInterval(function() {
-            fadeOut();
-            setTimeout(function() {
-                fadeIn();
-            }, 1000); // Adjust this delay as needed
-            }, 2000); // Adjust this interval as needed
-
-        } catch (error) {
-            console.log('Error:', error);
-        }
-
-        // if (itemcount > 0) {
-        //     reduceItem(area,item)
-        //     confettiParams.number = 70;
-        //     prize.innerHTML = `${indicatedSegment.text}!`;
-        //     confettiLoop();
-        //     updateCountInArea(indicatedSegment.text);
-        //     let fadeImage = document.getElementById('fadeImage');
-        //     console.log(fadeImage)
-
-        //     function fadeIn() {
-        //         fadeImage.style.opacity = 1;
-        //     }
-
-        //     function fadeOut() {
-        //         fadeImage.style.opacity = 0;
-        //     }
-
-        //     // Initial fade in
-        //     fadeIn();
-
-        //     // Set interval for fading in and out
-        //     setInterval(function() {
-        //     fadeOut();
-        //     setTimeout(function() {
-        //         fadeIn();
-        //     }, 1000); // Adjust this delay as needed
-        //     }, 2000); // Adjust this interval as needed
-        // } else {
-        //     stopConfetti();
-        //     prize.innerHTML = `Try Again`;
-        // }
+        }, 1000); // Adjust this delay as needed
+        }, 2000); // Adjust this interval as needed
     }
 
-    async function reduceItem(selectedArea, selectedItem) {
-        console.log('Reduce:')
-        console.log(selectedArea,selectedItem)
-        try {
-            const apiUrl = 'http://144.126.220.111/api/reduce';
-            const params = {
-                location: selectedArea,
-                gift: selectedItem
-            };
-
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[selectedItem]);
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-    }
-
-    async function checkItemAvailability(selectedArea, selectedItem) {
-        let count = 0
-        console.log(selectedArea,selectedItem)
-        try {
-            const apiUrl = 'http://144.126.220.111/api/checkcount';
-            const params = {
-                location: selectedArea,
-                gift: selectedItem
-            };
-
-            const response = await axios.get(apiUrl, { params });
-            console.log(response.data.count[selectedItem]);
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-
-
-        return count
-    }
-
-
-    //const axios = require('axios')
-
-    function updateCount(item){
-        let url = 'count.php?item=' + item
-        axios.get('http://144.126.220.111/api/temp?item='+item)
-        .then((res) => {
-            checkStock(item,res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function updateCountInArea(item){     
-        let url = 'http://144.126.220.111/api/temp?item='+item+'&area='+'NA'+'&name='+name
-        axios.get(url)
-        .then((res) => {
-            checkStock(item,res.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
-    function checkStock(item,count){
-        let currentcount = count[0]['count']
-        console.log(item,count[0]['count'])
-        // Assuming the <span> element has an id attribute of 'result'
-        switch (item) {
-        case 'Key Holder':
-            document.getElementById('keyholder').innerHTML = currentcount + ' ' + item + ' won.'
-            break;
-
-        case 'Fuel':
-            document.getElementById('fuel').innerHTML = currentcount + ' ' + item + ' vouchers won.'
-            break;
-
-        case 'Cap':
-            document.getElementById('cap').innerHTML = currentcount + ' ' + item + ' won.'
-            break;
-        }
-
-    }
-
-    function hide(){
-        console.log(12)
-    }
 </script>
 </body>
 </html>
