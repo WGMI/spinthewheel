@@ -2551,10 +2551,10 @@
             [                               // font size and test colour overridden on backrupt segments.
                 {'fillStyle': '#0d570d', 'text': 'Bottle', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ffffff', 'text': 'Lunch Bag', 'textFillStyle': '#000'},
-                {'fillStyle': '#0d570d', 'text': 'Try Again', 'textFillStyle': '#fff'},
+                {'fillStyle': '#0d570d', 'text': 'Sorry. Next time.', 'textFillStyle': '#fff'},
                 {'fillStyle': '#ffffff', 'text': 'T shirts', 'textFillStyle': '#000'},
                 {'fillStyle': '#0d570d', 'text': 'Thermal bottle', 'textFillStyle': '#fff'},
-                {'fillStyle': '#ffffff', 'text': 'Try Again', 'textFillStyle': '#000'}
+                {'fillStyle': '#ffffff', 'text': 'Sorry. Next time.', 'textFillStyle': '#000'}
             ],
         'animation':           // Specify the animation to use.
             {
@@ -2736,12 +2736,6 @@
         // Define the available items in each area
 
         // Example usage
-
-        if(!availableitems.includes(indicatedSegment.text)){
-            stopConfetti();
-            prize.innerHTML = `You Have Another Chance`;
-            return
-        }
         
         confettiParams.number = 70;
         prize.innerHTML = `${indicatedSegment.text}!`;
