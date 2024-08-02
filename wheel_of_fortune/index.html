@@ -2736,6 +2736,12 @@
         // Define the available items in each area
 
         // Example usage
+
+        if(indicatedSegment.text == 'Sorry. Next time.'){
+            stopConfetti();
+            prize.innerHTML = `Sorry. Next time.`;
+            return
+        }
         
         confettiParams.number = 70;
         prize.innerHTML = `${indicatedSegment.text}!`;
